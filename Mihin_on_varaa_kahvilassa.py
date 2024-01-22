@@ -1,3 +1,9 @@
+#Tämän koodin tarkoitus on rakentaa ohjelma, \
+# joka ottaa käyttäjältä rahan määrän, ja kertoo, \
+# mihin yhdistelmiin asiakkaalla on varaa. KESKEN, EI TOIMI  VIEL.
+
+
+
 money=float(input("How much you have?:"))
 
 kahvi = 2

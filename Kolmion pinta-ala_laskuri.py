@@ -1,6 +1,7 @@
 """
 yritys rakentaa ohjelma joka ottaa vaihtoehtoiset 2 arvoa kolmesta,
 ja laskee puuttuvan arvon suorakulmaisen kolmion pinta-alasta.
+EI TOIMI VIELÄ
 """
 
 print("Jos haluat laskea suorakulmaisen kolmion pinta-alan, /n sivun \
