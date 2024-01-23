@@ -23,11 +23,25 @@ while current_player <= player_count:
         print(f"pelaajan {current_player}, {throw_count}. heitto: {dice}")
         result += dice
         throw_count += 1
+    print(f"pelaajan {current_player}, tuos:{result}")
     #testataan saatiinko uusi paras tulos, päivitetään edon
     # täyttyessä parhaan pelaajan ja tuloksen arvot muuttujiin best_player ja best_result
     if result > best_result:
         best_result = result
-        best_player = current_player
-    print(f"pelaajan {current_player}, tuos:{result}")
+        best_player = f"pelaaja {current_player}"
+    elif result == best_result: #jos tulos ei parempi mut yhtäsuuri, lisätään 2 pelaajan nro
+        best_player = best_player + f"Pelaaja {current_player}"
     current_player += 1
 print(f"Paras tulos ja pelaaja: pelaaja {best_player}, tulos {best_result}")
+
+
+#Break_komento, "heittää" ulos aktiivisesta silmukasta, suoritus jatkuu koodilohkon jälkeen
+
+counter = 0
+while True: #ikuinen silmukka
+    print(f"laskuri eka {counter}")
+    counter += 1
+    if counter == 8:
+        break   #poistuu silmukan koodilohkosta samantien, alla oleva ei toistu
+    print(f"laskuri toka {counter}")
+
