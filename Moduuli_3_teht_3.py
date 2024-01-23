@@ -1,4 +1,4 @@
-#hemoglobiiniarvo tehtävä, tehty tarkoituksella hieman monimutkaisen kautta,
+# hemoglobiiniarvo tehtävä, tehty tarkoituksella hieman monimutkaisen kautta,
 # jotta vältyttäisiin eri tavoilta ilmaista sukupuoli (nainen/tyttö, mies/poika, jne.)
 # kun ei vielä olla opeteltu tehdä valintaruutu tyyppisiä käyttöliittymiä tms.
 
