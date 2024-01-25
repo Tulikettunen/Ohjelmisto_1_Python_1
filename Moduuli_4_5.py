@@ -17,7 +17,7 @@ while i <= 5:
         print("Tervetuloa!")
         break
     elif username_gues != username or password_gues != password:
-        if i < 4:
+        if i < 5:
             print("Salasana tai käyttäjätunnus väärin, kokeile uudestaan.")
         print(f"{5-i} yritystä jäljellä.")
     i += 1
