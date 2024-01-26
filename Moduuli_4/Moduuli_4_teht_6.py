@@ -26,7 +26,6 @@ i = 1
 while i <= point_amount_N:
     x = random.uniform(-1, 1)
     y = random.uniform(-1, 1)
-    N = point_amount_N
     if x **2 + y **2 < 1:
         n += 1
     i += 1
