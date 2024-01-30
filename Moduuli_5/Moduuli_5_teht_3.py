@@ -10,13 +10,18 @@ luvulla 3 tai luvulla 7.
 
 
 number = int(input("Enter a number: "))
+e = 2
 
 for i in range(2, round(number / 2)):
     if number % i == 0:
         print(f"Luku {number} ei ole alkuluku, se on jaollinen ainakin luvulla {i}")
         break
-    else:
-        print(f"Luku {number} on alkuluku!")
+    e += 1
+
+if e == round(number / 2):
+    print(f"Luku {number} on alkuluku!")
+
+
 
 
 
