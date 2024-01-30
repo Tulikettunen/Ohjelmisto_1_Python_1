@@ -8,7 +8,7 @@ joka kysytään käyttäjältä ohjelman suorituksen alussa.
 
 
 import random
-silmaluku = int(input("Halutt nopan maximi silmäluku: "))
+silmaluku = int(input("Haluttu nopan maximi silmäluku: "))
 noppanen = 0
 
 
