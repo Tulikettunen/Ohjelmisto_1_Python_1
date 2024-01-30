@@ -6,3 +6,19 @@ Vihje: listan alkioiden lajittelujärjestyksen voi kääntää antamalla sort-me
 argumentiksi reverse=True.
 """
 
+
+number = input("Give a number: ")
+lista = []
+
+while number != "":
+    try:
+        number = int(number)
+        lista.append(number)
+        number = input("Give a number: ")
+    except:
+        number = input("Give a valid number: ")
+
+
+lista.sort(reverse=True)
+print(lista[0:5])
+
