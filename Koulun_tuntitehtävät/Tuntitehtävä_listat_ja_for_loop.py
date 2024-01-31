@@ -43,5 +43,5 @@ print(list(range(0, 100, 11)[1:]))
 for luku in range(6):
     print("Moi!")
 
-print(list(range(90,4,-5)))
+print(list(range(90, 4, -5)))
 
