@@ -6,15 +6,23 @@ varten pääohjelma, jossa luot listan, kutsut funktiota ja tulostat sen palautt
 
 
 lista = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-optional_list = (input("Kirjoita haluamasi numero: \n"))
+optional_list = (input("Kirjoita haluamasi numero listaan, \
+kun et halua lisätä enempää, paina enter: \n"))
 opt_list = []
 
 
 def optional_summa(lis):
     while lis != "":
-        opt_list = opt_list.append(int(lis))
-        lis = input("Kirjoita haluamasi numero: \n")
-    return opt_list
+        try:
+            opt_list.append(int(lis))
+            lis = input("Kirjoita haluamasi numero: \n")
+
+        except:
+            lis = input("Kirjoitathan kenttään vain numeroita: \n")
+    opt_summa = 0
+    for num in opt_list:
+        opt_summa += num
+    return opt_summa
 
 
 def listan_summa(lis):
@@ -24,6 +32,6 @@ def listan_summa(lis):
     return summa
 
 
-print(listan_summa(lista))
+print(f"Itse muokattavan listan summa on: {optional_summa(optional_list)}.")
 
-print(optional_summa(optional_list))
+print(f"Kiinteän listan summa on: {listan_summa(lista)}.")
