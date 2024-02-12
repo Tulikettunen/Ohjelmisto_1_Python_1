@@ -65,3 +65,17 @@ while True:
                         "Jos haluat lisätä uuden: valitse 2. \n"
                         "Jos haluat lopettaa: paina 3: \n")
 
+while True:
+    choice = input("os haluat hakea tietoa: valitse 1 \n"
+                   "Jos haluat lisätä uuden: valitse 2 \n"
+                   "Jos haluat lopettaa: paina 3: \n")
+    match choice:
+        case "1":
+            ICAO = input("Syötä kentän ICAO-koodi: \n")
+            print(f"Hakemasi kenttä: {kenttä_haku()}")
+        case "2":
+            ICAO = input("Syötä kentän ICAO-koodi: \n")
+            kenttä_add(ICAO)
+        case "3":
+            break
+
