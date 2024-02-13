@@ -29,7 +29,7 @@ dict_lentokentät = {}
 def kenttä_add(icao):
     icao = input("Syötä lentokentän koodi: \n")
     cursor = connection.cursor()
-    cursor.execute(f"SELECT airport.name, airport.ident FROM airport WHERE airport.ident = '{icao}';")
+    cursor.execute(f"SELECT airport.name, airport.ident FROM airport WHERE airport.ident = '{icao.upper()}';")
     if cursor.rowcount == 0:
         print("Hakemaasi lentokenttää ei ole olemassa.")
     elif cursor.rowcount == 1:
@@ -43,39 +43,32 @@ def kenttä_add(icao):
     return
 
 def kenttä_haku(icao):
-    icao = input("Syötä lentokentän koodi: \n")
-    print(dict_lentokentät[icao])
-
-while True:
-    choice = input("Jos haluat hakea tietoa: "
-                   "valitse 1. \n Jos haluat lisätä uuden: valitse 2. "
-                   "\nJos haluat lopettaa: paina 3: \n")
-    if int(choice) == 1:
-        ICAO = input("Syötä kentän ICAO-koodi: \n")
-        print(f"Hakemasi kenttä: {kenttä_haku()}")
-    elif int(choice) == 2:
-        ICAO = input("Syötä kentän ICAO-koodi: \n")
-        kenttä_add(ICAO)
-    elif int(choice) == 3:
-        False
-
+    cursor = connection.cursor()
+    cursor.execute(f"SELECT airport.name, airport.ident FROM airport WHERE airport.ident = '{icao}';")
+    if cursor.rowcount == 0:
+        print("Hakemaasi lentokenttää ei ole olemassa.")
     else:
-        choice = input("Syötäthän jonkun numeron 1-3!\n"
-                        "Jos haluat hakea tietoa: valitse 1. \n "
-                        "Jos haluat lisätä uuden: valitse 2. \n"
-                        "Jos haluat lopettaa: paina 3: \n")
+        cursor.fetchone() in dict_lentokentät
+        return dict_lentokentät[icao]
 
-while True:
-    choice = input("os haluat hakea tietoa: valitse 1 \n"
-                   "Jos haluat lisätä uuden: valitse 2 \n"
-                   "Jos haluat lopettaa: paina 3: \n")
-    match choice:
-        case "1":
-            ICAO = input("Syötä kentän ICAO-koodi: \n")
-            print(f"Hakemasi kenttä: {kenttä_haku()}")
-        case "2":
-            ICAO = input("Syötä kentän ICAO-koodi: \n")
-            kenttä_add(ICAO)
-        case "3":
-            break
 
+
+def main():
+    while True:
+        choice = input("Jos haluat hakea tietoa: valitse 1 \n"
+                       "Jos haluat lisätä uuden: valitse 2 \n"
+                       "Jos haluat lopettaa: paina 3: \n")
+        match choice:
+            case "1":
+                ICAO = input("Syötä kentän ICAO-koodi: \n").upper()
+                print(f"Hakemasi kenttä: {kenttä_haku(ICAO)}")
+            case "2":
+                ICAO = input("Syötä kentän ICAO-koodi: \n")
+                kenttä_add(ICAO)
+            case "3":
+                break
+            case _:
+                print("Oot tyhmä, syötä valinta numeroina 1-3: \n")
+
+if __name__ == "__main__":
+    main()
