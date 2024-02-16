@@ -23,34 +23,33 @@ connection = mysql.connector.connect(
     password="root",
     autocommit=True
 )
-set_lentokentät = set()
+
 dict_lentokentät = {}
 
+
 def kenttä_add(icao):
-    icao = input("Syötä lentokentän koodi: \n")
     cursor = connection.cursor()
-    cursor.execute(f"SELECT airport.name, airport.ident FROM airport WHERE airport.ident = '{icao.upper()}';")
+    icao = icao.upper()
+    cursor.execute(f"SELECT airport.name, airport.ident FROM airport WHERE airport.ident = '{icao}'")
+    data = cursor.fetchone()
     if cursor.rowcount == 0:
         print("Hakemaasi lentokenttää ei ole olemassa.")
     elif cursor.rowcount == 1:
         if cursor.fetchone() in dict_lentokentät:
             print("Hakemasi lentokenttä on jo tallennettu.")
         else:
-            dict_lentokentät[f"{icao}"] = cursor.fetchone()
+            dict_lentokentät[f"{icao}"] = data[0]
             print("Uusi lentokenttä lisätty kirjastoon")
     else:
         print("Useampi hakutulos, tarkenna hakua")
     return
 
-def kenttä_haku(icao):
-    cursor = connection.cursor()
-    cursor.execute(f"SELECT airport.name, airport.ident FROM airport WHERE airport.ident = '{icao}';")
-    if cursor.rowcount == 0:
-        print("Hakemaasi lentokenttää ei ole olemassa.")
-    else:
-        cursor.fetchone() in dict_lentokentät
-        return dict_lentokentät[icao]
 
+def kenttä_haku(ICAO):
+    if ICAO in dict_lentokentät.keys():
+        print(f"Lentokentän koodi on {ICAO}, ja nimi: {dict_lentokentät[ICAO]}")
+    else:
+        print("Hakemaasi lentokenttää ei ole lisätty.")
 
 
 def main():
@@ -61,7 +60,7 @@ def main():
         match choice:
             case "1":
                 ICAO = input("Syötä kentän ICAO-koodi: \n").upper()
-                print(f"Hakemasi kenttä: {kenttä_haku(ICAO)}")
+                kenttä_haku(ICAO)
             case "2":
                 ICAO = input("Syötä kentän ICAO-koodi: \n")
                 kenttä_add(ICAO)
